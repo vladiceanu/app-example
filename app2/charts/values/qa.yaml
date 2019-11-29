@@ -1,0 +1,14 @@
+name: app2
+namespace: app2
+replicas: 1
+image: 
+  name: app2-image
+  rev: latest
+resources:
+  requests:
+    cpu: 100m
+    memory: 64Mi
+  limits:
+    cpu: 1
+    memory: 64Mi
+

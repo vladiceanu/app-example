@@ -1,0 +1,45 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.name }}
+spec:
+  revisionHistoryLimit: 1
+  strategy:
+    rollingUpdate:
+      maxUnavailable: "30%"
+      maxSurge: "30%"
+  selector:
+    matchLabels:
+      app: {{ .Values.name }}
+  replicas: {{ .Values.replicas }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.name }}
+        active: "yes"
+    spec:
+      containers:
+      - name: {{ .Values.name }}
+        image: {{ .Values.image.name }}:{{ .Values.image.rev }}
+        resources:
+          requests:
+            cpu: {{ .Values.resources.requests.cpu }}
+            memory: {{ .Values.resources.requests.memory }}
+          limits:
+            cpu: {{ .Values.resources.limits.cpu }}
+            memory: {{ .Values.resources.limits.memory }}
+        env:
+        - name: ELASTICSEARCH_HOST
+          value: "elasticsearch-hot.logs.svc.prod-monitoring-be.goeuro.ninja"
+        - name: FORCE_RESTART
+          value: "{{ now.Unix }}"
+        livenessProbe:
+          exec:
+            command: ["/bin/true"]
+        readinessProbe:
+          exec:
+            command: ["/bin/true"]
