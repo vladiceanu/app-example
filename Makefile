@@ -2,6 +2,12 @@ APP?=app1
 ENV?=dev
 REV?=local
 
+setup_env: 
+	(cd provision/ && ./setup.sh)
+
+test_env: prepare_env
+	(cd provision/ && ./test.sh)
+
 build:
 	docker build -t ${APP}:${REV} ${APP}/.
 	docker save ${APP} > ${APP}.tar
