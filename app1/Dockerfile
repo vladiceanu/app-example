@@ -1,6 +1,6 @@
 FROM python:2.7-alpine
 
-RUN pip install --upgrade pip flask flask-log-request-id
+RUN pip install --upgrade pip flask==1.1.1 flask-log-request-id==0.10.1
 COPY app/script.py /app/script.py
 
 WORKDIR /app

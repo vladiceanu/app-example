@@ -34,6 +34,12 @@ spec:
             cpu: {{ .Values.resources.limits.cpu }}
             memory: {{ .Values.resources.limits.memory }}
         env:
+        {{- if .Values.env }}
+        {{- range $key, $val := .Values.env }}
+        - name: {{ $key }}
+          value: "{{ $val }}"
+        {{- end }}
+        {{- end }}
         - name: FORCE_RESTART
           value: "{{ now.Unix }}"
         livenessProbe:

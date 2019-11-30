@@ -3,6 +3,7 @@ replicas: 1
 nodePort: 32001
 servicePort: 8080
 image: 
+  pullPolicy: Never
   name: app2
   rev: latest
 resources:
@@ -12,4 +13,7 @@ resources:
   limits:
     cpu: 1
     memory: 64Mi
+env:
+  UPSTREAM_ADDR: "app1.app1"
+  UPSTREAM_PORT: 8080
 

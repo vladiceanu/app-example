@@ -25,7 +25,7 @@ spec:
       containers:
       - name: {{ .Values.name }}
         image: {{ .Values.image.name }}:{{ .Values.image.rev }}
-        imagePullPolicy: Never
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
         resources:
           requests:
             cpu: {{ .Values.resources.requests.cpu }}
@@ -34,6 +34,12 @@ spec:
             cpu: {{ .Values.resources.limits.cpu }}
             memory: {{ .Values.resources.limits.memory }}
         env:
+        {{- if .Values.env }}
+        {{- range $key, $val := .Values.env }}
+        - name: {{ $key }}
+          value: "{{ $val }}"
+        {{- end }}
+        {{- end }}
         - name: FORCE_RESTART
           value: "{{ now.Unix }}"
         livenessProbe:
