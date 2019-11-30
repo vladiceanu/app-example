@@ -2,13 +2,15 @@ APP?=app1
 ENV?=dev
 REV?=local
 
-setup_env: 
+setup: 
 	(cd provision/ && ./setup.sh)
 
-test_env: prepare_env
+test_env:
 	(cd provision/ && ./test.sh)
 
-build:
+test: test_env
+
+build: 
 	docker build -t ${APP}:${REV} ${APP}/.
 	docker save ${APP} > ${APP}.tar
 	microk8s.ctr --namespace k8s.io image import ${APP}.tar
@@ -19,5 +21,5 @@ render:
 		--set image.rev=${REV} ${APP}/ops/ \
 		--output-dir ${APP}/ops/manifests 
 
-apply: render
+apply: test build render
 	microk8s.kubectl apply -f ${APP}/ops/manifests -R
