@@ -1,0 +1,48 @@
+---
+# Source: app2/templates/03_deployment.yaml
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app2
+  namespace: app2
+  labels:
+    app: app2
+spec:
+  revisionHistoryLimit: 1
+  strategy:
+    rollingUpdate:
+      maxUnavailable: "30%"
+      maxSurge: "30%"
+  selector:
+    matchLabels:
+      app: app2
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: app2
+        active: "yes"
+    spec:
+      containers:
+      - name: app2
+        image: app2:local
+        imagePullPolicy: Never
+        resources:
+          requests:
+            cpu: 100m
+            memory: 64Mi
+          limits:
+            cpu: 1
+            memory: 64Mi
+        env:
+        - name: FORCE_RESTART
+          value: "1575140831"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080

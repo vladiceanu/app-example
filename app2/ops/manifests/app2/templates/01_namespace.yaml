@@ -1,0 +1,9 @@
+---
+# Source: app2/templates/01_namespace.yaml
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: app2
+  annotations:
+    email: "vladiceanu.n@gmail.com"

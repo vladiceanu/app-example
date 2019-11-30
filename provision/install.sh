@@ -11,7 +11,7 @@ if [[ ! $PATH =~ "/snap/bin" ]]; then
     export PATH=$PATH:/snap/bin
 fi
 
-microk8s.enable helm
+microk8s.enable helm dns
 
 # check whether microk8s is running
 is_microk8s_ready () {
