@@ -1,8 +1,9 @@
-name: app2
-namespace: app2
+name: app1
 replicas: 1
+nodePort: 32000
+servicePort: 8080
 image: 
-  name: app2-image
+  name: app1
   rev: latest
 resources:
   requests:
