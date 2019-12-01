@@ -4,13 +4,12 @@ REV?=local
 
 setup: 
 	(cd provision/ && ./setup.sh)
+
 test_env:
 	(cd provision/ && ./test.sh)
 
 test_app:
 	(cd ${APP}/app/ && ./test.sh)
-
-prepare: setup test_env
 
 build: 
 	docker build -t ${APP}:${REV} ${APP}/.
