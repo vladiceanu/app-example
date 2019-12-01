@@ -34,3 +34,17 @@ sudo apt-get -y -qqq install docker-ce=${DOCKER_VERSION}
 
 sudo usermod -a -G microk8s $(whoami)
 sudo usermod -a -G docker $(whoami)
+
+echo """
+       _______ _______ ______ _   _ _______ _____ ____  _   _ 
+    /\|__   __|__   __|  ____| \ | |__   __|_   _/ __ \| \ | |
+   /  \  | |     | |  | |__  |  \| |  | |    | || |  | |  \| |
+  / /\ \ | |     | |  |  __| | . ` |  | |    | || |  | | . ` |
+ / ____ \| |     | |  | |____| |\  |  | |   _| || |__| | |\  |
+/_/    \_\_|     |_|  |______|_| \_|  |_|  |_____\____/|_| \_|
+
+--------------------------------------------------------------
+YOU NEED TO RE-LOGIN IN ORDER TO APPLY NEW USER PERMISSIONS AND
+                ENVIRONMENT VARIABLES. THANK YOU!!
+--------------------------------------------------------------
+"""
