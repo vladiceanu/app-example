@@ -23,10 +23,27 @@ cd app-example/
 ```sh
 make setup
 ```
-4. Logout and login in order the changes to take effect.
-6. Add `/snap/bin` to environment and run test:
+4. Re-login order the changes to take effect.
+6. Run the test that will check the environment:
 ```sh
-export PATH="$PATH:/snap/bin"
 cd app-example/
 make test_env
 ```
+## Deployment of applications
+In order to deploy an application, you need to:
+1. Set environment variable `APP` to app name you want to deploy and run apply:
+```sh
+export APP=app1
+make apply
+```
+2. Check your application status:
+```sh
+microk8s.kubectl -n app1 get pods
+
+and
+
+http://<VM-IP>:32000/health
+``` 
+This will cover building the image, testing it and deploying to MicroK8s, making it available thru a NodePort:
+1. <b>APP1</b>: http://<VM_IP>:32000/ and /health
+2. <b>APP2</b>: http://<VM_IP>:32001/ and /health
