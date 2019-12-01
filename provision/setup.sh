@@ -31,3 +31,6 @@ sudo add-apt-repository \
    stable"
 sudo apt-get -y -qqq update
 sudo apt-get -y -qqq install docker-ce=${DOCKER_VERSION}
+
+sudo usermod -a -G microk8s $(whoami)
+sudo usermod -a -G docker $(whoami)

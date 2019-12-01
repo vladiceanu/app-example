@@ -23,12 +23,7 @@ cd app-example/
 ```sh
 make setup
 ```
-4. Set your user permissions for docker and microK8s:
-```sh
-sudo usermod -a -G microk8s $(whoami)
-sudo usermod -a -G docker $(whoami)
-```
-5. Logout and login in order the changes to take effect.
+4. Logout and login in order the changes to take effect.
 6. Add `/snap/bin` to environment and run test:
 ```sh
 export PATH="$PATH:/snap/bin"
