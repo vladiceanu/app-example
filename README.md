@@ -1,12 +1,12 @@
 ## Example project: microK8s + Python
 <hr>
-This is a simple project that includes a <b>microK8s</b> deployment and 2 Python application that run inside microK8s.
+This is a simple project that includes a <b>microK8s</b> deployment and 2 Python applications that run inside <a href="https://microk8s.io/">microK8s</a>.
 
 ## System Requirements
-<hr>
-1. One VM with OS <u>Debian GNU/Linux 9</u>; 2CPU; 4Gi Memory; 10Gi Storage.<br>
-2. Root SSH access to the VM.<br>
-3. Ports `32000-32001` and `8080` available to be bind.
+1. One <b>Debian GNU/Linux 9</b> VM; 
+2. min: 1CPU; 4Gi Memory; 10Gi Storage;<br>
+2. root SSH access to the VM;<br>
+3. ports <b>32000 - 32001</b> and <b>8080</b> available.
 
 ## Environment preparation
 1. Install build-essential and git: 
@@ -31,7 +31,7 @@ make test_env
 ```
 ## Deployment of applications
 In order to deploy an application, you need to:
-1. Set environment variable `APP` to app name you want to deploy and run apply:
+1. Set environment variable <b>APP</b> to app name you want to deploy and run apply:
 ```sh
 export APP=app1
 make apply
