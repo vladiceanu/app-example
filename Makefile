@@ -22,5 +22,5 @@ render:
 		--set image.rev=${REV} ${APP}/ops/ \
 		--output-dir ${APP}/ops/manifests 
 
-apply: build test_app render
+deploy: build test_app render
 	microk8s.kubectl apply -f ${APP}/ops/manifests -R

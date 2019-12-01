@@ -46,10 +46,10 @@ make test_env
 ```
 ## Deployment of applications
 In order to deploy an application, you need to:
-1. Set environment variable <b>APP</b> to app name you want to deploy and run apply:
+1. Set environment variable <b>APP</b> to app name you want to deploy and run deploy:
 ```sh
 export APP=app1
-make apply
+make deploy
 ```
 2. Check your application status in K8s:
 ```sh

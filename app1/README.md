@@ -27,3 +27,6 @@ healthy
 - graceful shutdown;
 - unittests;
 - TBD.
+
+## Deployment: Helm + Kubectl apply
+For the templates rendering we're using here Helm, where we can split based on the environment (dev, qa, stage, etc) and generate for each stage separate manifests with custom parameters/inputs.
