@@ -12,6 +12,7 @@ sudo apt install -y -qqq snapd=${SNAPD_VERSION}
 sudo snap install core
 sudo snap install microk8s --channel=${MICROK8S_VERSION} --classic
 
+export PATH=$PATH:/snap/bin
 # enable microk8s components
 microk8s.enable helm dns
 
