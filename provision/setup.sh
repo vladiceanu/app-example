@@ -8,13 +8,6 @@ DOCKER_VERSION="5:19.03.5~3-0~debian-stretch"
 sudo apt update -y -qqq
 sudo apt install -y -qqq snapd=${SNAPD_VERSION} 
 
-# set snap to the PATH
-if [[ ! $PATH =~ "/snap/bin" ]]; then
-    echo "Adding '/snap/bin' to PATH."
-    echo PATH=$PATH:/snap/bin >> 
-    export PATH=$PATH:/snap/bin
-fi
-
 # install microk8s
 snap install core
 snap install microk8s --channel=${MICROK8S_VERSION} --classic
