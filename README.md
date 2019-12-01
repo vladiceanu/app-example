@@ -1,6 +1,8 @@
 ## Example project: microK8s + Python
-<hr>
 This is a simple project that includes a <b>microK8s</b> deployment and 2 Python applications that run inside <a href="https://microk8s.io/">microK8s</a>.
+
+## Overview
+
 
 ## System Requirements
 1. One <b>Debian GNU/Linux 9</b> VM; 
@@ -36,14 +38,19 @@ In order to deploy an application, you need to:
 export APP=app1
 make apply
 ```
-2. Check your application status:
+2. Check your application status in K8s:
 ```sh
 microk8s.kubectl -n app1 get pods
+```
+3. To redeploy any changes, simply run again <b>step 1</b>, we'll take care of the rest (testing, rendering, redeploying, etc).
 
-and
+## Access the applications
+In order to make the applications accessible from outside the node and avoid introduction of any kind of Proxy or LoadBalancers, I've decided to use service type <b>NodePort</b> that will expose each of our applications. Thus, here is what we have:
+1. <b>app1</b> uses port <b>32000</b>;
+2. <b>app2</b> uses port <b>32001</b>;
 
-http://<VM-IP>:32000/health
-``` 
-This will cover building the image, testing it and deploying to MicroK8s, making it available thru a NodePort:
-1. <b>APP1</b>: http://<VM_IP>:32000/ and /health
-2. <b>APP2</b>: http://<VM_IP>:32001/ and /health
+Example:
+```sh
+curl http://<VM_IP>:32000/ # accessing app1
+curl http://<VM_IP>:32001/ # accessing app2
+```
