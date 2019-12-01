@@ -3,9 +3,9 @@ This is a simple project that includes a <b>microK8s</b> deployment and 2 Python
 
 ## Overview
 <b>App1</b> is running a HTTP server that returns 
-```json
+```sh
 {
-    “id”: “1”,
+    “id”: “<REQUEST ID>”,
     “message”: “Hello world”
 }
 ```
