@@ -6,7 +6,7 @@ DOCKER_VERSION="5:19.03.5~3-0~debian-stretch"
 
 # install snapd
 apt update -y -qqq
-apt install -y -qqq snapd=${SNAPD_VERSION}
+apt install -y -qqq snapd=${SNAPD_VERSION} 
 
 # set snap to the PATH
 if [[ ! $PATH =~ "/snap/bin" ]]; then
@@ -27,7 +27,8 @@ apt -y -qqq install \
      ca-certificates \
      curl \
      gnupg2 \
-     software-properties-common 
+     software-properties-common \
+     bats
 
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 add-apt-repository \
