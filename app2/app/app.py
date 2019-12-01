@@ -24,7 +24,8 @@ def get_home():
         url = 'http://{}:{}/'.format(UPSTREAM_URL,UPSTREAM_PORT)
         r = http.request('GET', url)
         message = json.loads(r.data.decode('utf-8'))
-        return ''.join(reversed(message["message"])), 200
+        message["message"] = ''.join(reversed(message["message"]))
+        return message
     except Exception as e:
         return {"error": e}
 
