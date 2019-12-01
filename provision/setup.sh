@@ -9,8 +9,8 @@ sudo apt update -y -qqq
 sudo apt install -y -qqq snapd=${SNAPD_VERSION} 
 
 # install microk8s
-snap install core
-snap install microk8s --channel=${MICROK8S_VERSION} --classic
+sudo snap install core
+sudo snap install microk8s --channel=${MICROK8S_VERSION} --classic
 
 # enable microk8s components
 microk8s.enable helm dns
