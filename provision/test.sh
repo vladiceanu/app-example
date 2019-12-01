@@ -42,9 +42,3 @@ MICROK8S_VERSION="v1.16.3"
     [ "$status" -eq 0 ]
     [[ "$output" == *"${DOCKER_VERSION}"* ]]
 }
-
-@test "is python present" {
-    run python --version
-    [ "$status" -eq 0 ]
-    [[ "$output" == *"Python"* ]]
-}
