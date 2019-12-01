@@ -13,7 +13,7 @@ sudo snap install core
 sudo snap install microk8s --channel=${MICROK8S_VERSION} --classic
 
 # enable microk8s components
-microk8s.enable helm dns
+sudo microk8s.enable helm dns
 
 # install docker
 sudo apt -y -qqq install \
