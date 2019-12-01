@@ -15,6 +15,8 @@ when called with method <b>GET</b> by any HTTP client.
 
 Both applications are running in Kubernetes environment and their deployment/redeployment is fully automated. A few tests are also covered.
 
+For more details, please see each app's folder.
+
 ## System Requirements
 1. One <b>Debian GNU/Linux 9</b> VM; 
 2. min: 1CPU; 2Gi Memory; 10Gi Storage;<br>
